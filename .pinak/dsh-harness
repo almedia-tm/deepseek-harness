@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+case "${1:-}" in
+  start) exec "$DIR/start.sh" ;;
+  stop) exec "$DIR/stop.sh" ;;
+  *) echo "usage: dsh-harness start|stop" >&2; exit 2 ;;
+esac

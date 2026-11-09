@@ -1,0 +1,9 @@
+repo: https://github.com/deepseek-ai/deepseek-harness
+path: ~/Documents/dsh-harness
+pinned_tag: dsh-v0.2.2-rc.1
+pin_link: https://github.com/deepseek-ai/deepseek-harness/tree/dsh-v0.2.2-rc.1
+version_note: master merge of the release was broken (subagent-oar run.ts TS2554); the shipped release tag is the working pin
+toolchain: node 26.5.0, pnpm 11.28.5 via corepack (repo packageManager), no global pnpm change
+update_flow: git fetch origin && git rebase --onto <new-pin-tag> <old-pin-tag> pinak-plugins, then npm install -g @deepseek-ai/dsh@<new-pin>; read docs/upgrade-guide entries between versions
+runtime: running dsh is the npm global install pinned by .pinak/.dsh-version; the clone is the source and docs reference
+layout: our files live on branch pinak-plugins under plugins/ and .pinak/; backup remote fork (handed over as a command, pending run)
