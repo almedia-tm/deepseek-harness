@@ -25,8 +25,10 @@ PLUGINS_DIR="$(cd "$DIR/.." && pwd)/plugins"
 if [ -d "$PLUGINS_DIR" ]; then
   for plugin in "$PLUGINS_DIR"/*/; do
     [ -e "${plugin}package.json" ] || continue
+    echo "setup: building plugin ${plugin%/}"
+    (cd "$plugin" && npm install --no-audit --no-fund && npm run build)
     echo "setup: installing plugin ${plugin%/}"
-    dsh plugin --profile web add "${plugin%/}"
+    dsh plugin --profile web add --workspace-root "${plugin%/}"
   done
 fi
 

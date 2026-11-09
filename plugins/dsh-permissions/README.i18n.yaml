@@ -1,0 +1,22 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write plugins/dsh-permissions/README.md
+/dsh-permissions:
+  en: 17462f2aa7ac4c51
+  zh: ef6dad1e6db68eef
+/dsh-permissions/deny-classes-guards-never-prompt:
+  en: 32fb7e27b240bdab
+  zh: 243259075146df81
+/dsh-permissions/ask-classes-approval-waterfall:
+  en: 707d6cf96f36d3b5
+  zh: a87ce9e763b19e4d
+/dsh-permissions/behavior:
+  en: 6b92423dcc1a10e0
+  zh: 6c619146cddfb314
+/dsh-permissions/config:
+  en: 606c5d3b57ffd1dd
+  zh: 2d7d5609a9ed3cc3
+/dsh-permissions/install:
+  en: 5faa8bdf7c027874
+  zh: 75a3cf79c75e89c1
