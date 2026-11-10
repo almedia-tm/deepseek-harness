@@ -130,3 +130,11 @@ export function validateClasses(denyClasses: readonly string[], askClasses: read
     throw new Error('dsh-permissions: both class lists are empty, refusing to boot without policy')
   }
 }
+
+export function tickSessionIds(entries: readonly { involvedSessionIds: readonly string[] }[]): Set<string> {
+  const ids = new Set<string>()
+  for (const entry of entries) {
+    for (const id of entry.involvedSessionIds) ids.add(id)
+  }
+  return ids
+}

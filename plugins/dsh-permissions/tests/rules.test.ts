@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { classifyAsk, classifyDeny, validateClasses, ASK_CLASSES, DENY_CLASSES } from '../src/guards'
+import { classifyAsk, classifyDeny, tickSessionIds, validateClasses, ASK_CLASSES, DENY_CLASSES } from '../src/guards'
 
 describe('classifyDeny', () => {
   it('denies secret file reads', () => {
@@ -95,5 +95,19 @@ describe('validateClasses', () => {
 
   it('throws when both lists are empty', () => {
     assert.throws(() => validateClasses([], []), /refusing to boot/)
+  })
+})
+
+describe('tickSessionIds', () => {
+  it('collects involved sessions across tasks', () => {
+    const ids = tickSessionIds([
+      { involvedSessionIds: ['session-a', 'session-shared'] },
+      { involvedSessionIds: ['session-b', 'session-shared'] },
+    ])
+    assert.deepEqual([...ids].sort(), ['session-a', 'session-b', 'session-shared'])
+  })
+
+  it('returns an empty set for no entries', () => {
+    assert.equal(tickSessionIds([]).size, 0)
   })
 })

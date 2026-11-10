@@ -25,6 +25,7 @@ Pinak's permission policy as a dsh plugin: monotonic deny guards plus approval a
 
 - Guards are monotonic: a denial cannot be turned back into permission, even under danger-full-access.
 - Ask decisions go through the approval service: interactive profiles prompt, headless profiles with approval never reject deterministically.
+- Scheduled-task sessions are trusted: their approval policy is set to never before the first turn, and the ask tier abstains for them, so ticks run without prompts while the deny guards stay active.
 - sudo and doas prefixes are stripped before matching.
 - An unknown class name in config fails loud at load; two empty class lists refuse to boot.
 - Sandbox mode and approval policy stay harness presets; this plugin contributes the guard list and the ask routing.
@@ -35,6 +36,7 @@ Pinak's permission policy as a dsh plugin: monotonic deny guards plus approval a
 config:
   denyClasses: [secret-read, env-dump, git-commit, gcloud-secrets, railway-variables, env-file-write, artifact]
   askClasses: [deploy, git-state, rm, docker, kubectl, terraform, mcp-write]
+  trustScheduledTicks: true
 ```
 
 ## Install

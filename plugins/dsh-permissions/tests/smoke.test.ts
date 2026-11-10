@@ -5,7 +5,7 @@ import { Config, apply, inject, name } from '../src/index.ts'
 describe('plugin entry', () => {
   it('exports the cordis entry contract', () => {
     assert.equal(name, 'dsh-permissions')
-    assert.ok(inject.includes('tools'))
+    assert.deepEqual(inject, ['tools', 'approval', 'schedule'])
     assert.equal(typeof apply, 'function')
     assert.equal(typeof Config, 'function')
   })

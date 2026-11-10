@@ -25,6 +25,7 @@
 
 - 守卫是单调的：拒绝不能被改回允许，即使处于 danger-full-access。
 - 询问决策走审批服务：交互式配置会提示，审批为 never 的无头配置会确定性拒绝。
+- 计划任务会话受信任：首次回合前审批策略被设为 never，询问层对其放行，因此定时任务无需提示即可运行，拒绝守卫仍然生效。
 - 匹配前会剥掉 sudo 和 doas 前缀。
 - 配置里出现未知类名会在加载时大声失败；两个类列表都为空时拒绝启动。
 - 沙箱模式和审批策略仍是 harness 预设；本插件贡献守卫列表和询问路由。
@@ -35,6 +36,7 @@
 config:
   denyClasses: [secret-read, env-dump, git-commit, gcloud-secrets, railway-variables, env-file-write, artifact]
   askClasses: [deploy, git-state, rm, docker, kubectl, terraform, mcp-write]
+  trustScheduledTicks: true
 ```
 
 ## 安装
